@@ -9,16 +9,24 @@ En la página web puedes registrate y crear un usuario que se guarda en una base
 
 Las funcionalidades son:
 - Registro
+![Registro](https://github.com/user-attachments/assets/b036ed59-a32f-4364-ba28-7ebbf96c333d)
+
 - Login con autenticación
+![Login](https://github.com/user-attachments/assets/26b4805b-d949-4b3b-ad0c-a63b1751fcdb)
+
 - Consultas a la API externa
 
 En **pódedex laravel** podemos buscar hasta 1025 pokemons ya sea por su nombre o por su nº de pokedex, al acceder a la pokedex siempre cargará un pokemon aleatorio, si buscamos pokemons sin nombre o nº de pokedex saldrá un pokemon aleatorio. 
+![Pokemon aleatorio 1](https://github.com/user-attachments/assets/af7946b6-5a37-4917-8d23-8ce260d11b48)
 
 Al buscar dicho pokemon nos saldrá características del pokemon buscado, como:
 - Foto
 - Nombre
 - Tipo
 - Estadísticas de combate
+
+![Pikachu](https://github.com/user-attachments/assets/fdec058a-a39d-4ba7-9033-890e6de1efb3)
+
 
 ## Tecnologias utilizadas
 1.  **Laravel**\
