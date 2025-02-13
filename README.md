@@ -286,3 +286,5 @@ server {
     -   **`fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;`**: Define la ruta completa al archivo PHP solicitado.-   **`location ~ /\.ht {}`**: Bloquea el acceso a los archivos `.ht` (como `.htaccess`) por razones de seguridad:
 
     -   **`deny all;`**: Deniega todas las solicitudes a archivos que comiencen con `.ht`.
+
+# Pasos para desplegar la aplicación.
