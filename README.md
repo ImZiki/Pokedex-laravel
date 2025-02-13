@@ -288,3 +288,8 @@ server {
     -   **`deny all;`**: Deniega todas las solicitudes a archivos que comiencen con `.ht`.
 
 # Pasos para desplegar la aplicación.
+Tendremos que hacer varios pasos para podes desplegar la aplicación en kubernetes, para ello debemos seguir lo siguiente:
+
+1. Instalar minikube
+   
+   Para ello iremos a la página oficial de [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download) y descargamos el instalador dependiendo de nuestro SO.
