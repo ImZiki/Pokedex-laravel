@@ -42,6 +42,7 @@ CMD service nginx start && php-fpm
 ## Archivos configurácion kubernetes (k8s)
 Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son tres:
 1. deployment.yml
+    ```
     apiVersion: apps/v1
     kind: Deployment
     metadata:
@@ -76,10 +77,11 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
           volumes:
             - name: storage
               emptyDir: {}
-
+    ```
    EXPLICACIÓN
    
 2. mysql-deployment.yml
+    ```
     apiVersion: v1
     kind: PersistentVolumeClaim
     metadata:
@@ -123,10 +125,11 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
             - name: mysql-storage
               persistentVolumeClaim:
                 claimName: mysql-pvc
-
+     ```
 EXPLICACION
    
 3. service.yml
+    ```
     apiVersion: v1
     kind: Service
     metadata:
@@ -152,4 +155,6 @@ EXPLICACION
         - protocol: TCP
           port: 3306
       clusterIP: None
+    
+```
 EXPLICACIÓN
