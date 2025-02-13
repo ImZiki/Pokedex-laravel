@@ -1,0 +1,295 @@
+
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Header styling */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0039f5; /* Rojo principal */
+    color: #ffffff;
+    padding: 10px 20px;
+    position: fixed; /* Mantener el header fijo en la parte superior */
+    top: 0;
+    left: 0;
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    z-index: 1000; /* Prioridad más alta sobre otros elementos */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Añade un efecto de sombra */
+    box-sizing: border-box; /* Evita desbordamientos */
+}
+
+/* Logo container */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Navigation bar styling */
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #b0cef1; /* Naranja oscuro */
+    color: black;
+}
+
+/* Content container (under the header) */
+.container {
+    display: flex;
+    margin-top: 70px; /* Compensa la altura del header fijo */
+    width: 100%;
+    height: calc(100vh - 70px); /* Ajusta la altura al resto de la pantalla */
+}
+.nav__submit{
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0039f5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+/* Search section */
+.search-section {
+    width: 30%;
+    background-color: #d32f2f;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.search-section input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.search-section input[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0039f5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-section input[type="submit"]:hover {
+    background-color: #8ca0e8;
+}
+
+/* Divider between sections */
+.divider {
+    width: 5px;
+    background-color: #212121;
+}
+
+/* Card section */
+.card-section {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/pokedexbg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+.empty-card {
+
+    background-color: #ffecec;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.2em;
+    color: #d63031;
+    box-shadow: 0 0 20px 5px rgba(255, 0, 0, 0.9)!important;
+    border-radius: 8px; /* Bordes redondeados para un mejor look */
+}
+
+
+.empty-card p {
+    margin: 10px 0;
+}
+/* Pokémon card styling */
+.pokemon-card {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: white;
+}
+
+.pokemon-card .header {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.pokemon-card .header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px;
+}
+
+.pokemon-card .content {
+    padding: 20px;
+}
+
+.pokemon-card .content h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.pokemon-card .content p {
+    margin: 5px 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+/* Login Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Asegura que el contenedor ocupe toda la pantalla */
+    padding-top: 70px; /* Espacio para no solaparse con el header fijo */
+    box-sizing: border-box;
+    background-color: #f0f0f0;
+    background-image: url('../images/pokedexbg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Login Form */
+.form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    width: 300px;
+    text-align: center;
+    opacity: 0.9; /* Añade un poco de transparencia para el efecto visual */
+}
+
+/* Form Title */
+.form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #0039f5; /* Azul del header */
+}
+
+/* Form Label */
+.form-label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Input fields */
+.form-input {
+    width: calc(100% - 20px); /* Restamos el padding a la derecha e izquierda */
+    padding: 10px; /* Espaciado dentro del campo de entrada */
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    color: black;
+    font-size: 16px;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+.form-error{
+    width: calc(100% - 20px); /* Restamos el padding a la derecha e izquierda */
+    padding: 10px; /* Espaciado dentro del campo de entrada */
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid red;
+    font-size: 16px;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+
+/* Submit Button */
+.form-submit {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #0039f5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.form-reset {
+    width: 100%;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f50000;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+.form-submit:hover {
+    background-color: #8ca0e8;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.btn-pokedex {
+    display: inline-block; /* Ajusta el ancho al contenido */
+    text-decoration: none; /* Elimina el subrayado */
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #0039f5;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-pokedex:hover {
+    background-color: #8ca0e8;
+}
