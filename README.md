@@ -1,4 +1,32 @@
 # POKEDEX LARAVEL
+
+
+## Explicacion app
+
+## Tecnologias utilizadas
+1.  **Laravel**\
+    Es un framework de PHP que facilita el desarrollo de aplicaciones web con una estructura limpia y organizada. Proporciona herramientas como enrutamiento, autenticación, ORM (Eloquent) y migraciones para bases de datos.
+
+2.  **Breeze (Alpine.js y Blade) para vistas, seguridad y dinamismo**
+
+    -   **Breeze**: Un starter kit liviano de Laravel que incluye autenticación básica.
+    -   **Alpine.js**: Una librería JavaScript minimalista que añade interactividad a las vistas sin necesidad de un framework pesado.
+    -   **Blade**: El motor de plantillas de Laravel que permite escribir vistas reutilizables con una sintaxis simple y eficiente.
+3.  **Axios.js para peticiones a API externa**\
+    Una librería de JavaScript para realizar solicitudes HTTP de manera sencilla y eficiente. Se usa comúnmente en aplicaciones web para interactuar con APIs externas.
+
+4.  **Nginx para el servidor web**\
+    Un servidor web de alto rendimiento que se usa para servir tu aplicación Laravel, actuar como proxy inverso y manejar el tráfico de manera eficiente.
+
+5.  **Docker para la imagen de la app**\
+    Permite empaquetar tu aplicación Laravel en un contenedor junto con sus dependencias, asegurando que funcione de manera consistente en cualquier entorno.
+
+6.  **Kubernetes con Minikube para el despliegue local**
+
+    -   **Kubernetes**: Un sistema de orquestación de contenedores que gestiona la implementación, escalabilidad y disponibilidad de aplicaciones en contenedores.
+    -   **Minikube**: Una herramienta que permite ejecutar un clúster de Kubernetes localmente, ideal para desarrollo y pruebas antes de llevar la aplicación a producción.
+
+
 ## Dockerfile
 ```
 FROM php:8.2-fpm AS base
