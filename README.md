@@ -182,7 +182,7 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
      ```
     EXPLICACIÓN
 
-### 1\. `PersistentVolumeClaim` (PVC)
+#### 1\. `PersistentVolumeClaim` (PVC)
 
 -   **`apiVersion: v1`**: Especifica que este recurso utiliza la versión 1 de la API de Kubernetes.
 -   **`kind: PersistentVolumeClaim`**: Define una solicitud para almacenamiento persistente en Kubernetes.
@@ -191,7 +191,7 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
     -   **`accessModes`**: Define cómo se puede acceder al volumen. En este caso, es `ReadWriteOnce`, lo que significa que el volumen puede ser montado por un solo nodo de Kubernetes en modo lectura y escritura.
     -   **`resources.requests`**: Solicita 1 GiB de almacenamiento para la base de datos MySQL.
 
-### 2\. `Deployment` para MySQL
+#### 2\. `Deployment` para MySQL
 
 -   **`apiVersion: apps/v1`**: Usa la versión 1 de la API para *Deployments*.
 -   **`kind: Deployment`**: Define el *Deployment* de MySQL.
