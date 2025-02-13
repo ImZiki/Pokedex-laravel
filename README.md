@@ -180,7 +180,7 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
               persistentVolumeClaim:
                 claimName: mysql-pvc
      ```
-EXPLICACIÓN
+    EXPLICACIÓN
 
 ### 1\. `PersistentVolumeClaim` (PVC)
 
@@ -240,7 +240,7 @@ EXPLICACIÓN
     
     ```
     
-EXPLICACIÓN
+    EXPLICACIÓN
 
 ### 1\. **`Service` para Pokedex**
 
