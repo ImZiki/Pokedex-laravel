@@ -237,3 +237,52 @@ EXPLICACIÓN
         -   **`port: 3306`**: El servicio escucha en el puerto 3306, que es el puerto estándar para MySQL.
         -   **`protocol: TCP`**: El servicio usa el protocolo TCP.
     -   **`clusterIP: None`**: Esto configura el servicio como un "Headless Service", lo que significa que no se asigna una dirección IP interna para el servicio, pero aún así los pods pueden comunicarse entre sí directamente (ideal para bases de datos o cuando se necesitan direcciones específicas para los pods).
+
+## Nginx.conf
+
+```
+server {
+    listen 80;
+    server_name localhost;
+    root /var/www/html/public;
+
+    index index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ /index.php?$query_string;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass unix:/run/php/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+
+```
+
+-   **`server {}`**: Bloque que define un servidor en Nginx.
+
+    -   **`listen 80;`**: El servidor escucha en el puerto 80 (HTTP).
+
+    -   **`server_name localhost;`**: El nombre del servidor es `localhost`, indicando que responderá a solicitudes a este nombre.
+
+    -   **`root /var/www/html/public;`**: Define el directorio raíz del sitio web, que es `/var/www/html/public`.
+
+    -   **`index index.php index.html index.htm;`**: Especifica los archivos que Nginx buscará primero cuando se acceda a un directorio (en orden: `index.php`, `index.html`, `index.htm`).
+
+    -   **`location / {}`**: Configura cómo manejar las solicitudes a la raíz del sitio:
+
+    -   **`try_files $uri $uri/ /index.php?$query_string;`**: Intenta servir el archivo solicitado, si no se encuentra, redirige a `index.php` pasando los parámetros de la consulta.-   **`location ~ \.php$ {}`**: Configura cómo manejar las solicitudes PHP:
+
+    -   **`include fastcgi_params;`**: Incluye los parámetros necesarios para FastCGI.
+    -   **`fastcgi_pass unix:/run/php/php-fpm.sock;`**: Pasa las solicitudes PHP al servicio PHP-FPM mediante un socket UNIX.
+    -   **`fastcgi_index index.php;`**: Especifica el archivo `index.php` como archivo predeterminado en directorios.
+    -   **`fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;`**: Define la ruta completa al archivo PHP solicitado.-   **`location ~ /\.ht {}`**: Bloquea el acceso a los archivos `.ht` (como `.htaccess`) por razones de seguridad:
+
+    -   **`deny all;`**: Deniega todas las solicitudes a archivos que comiencen con `.ht`.
