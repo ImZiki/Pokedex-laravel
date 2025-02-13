@@ -290,12 +290,45 @@ server {
 # Pasos para desplegar la aplicación.
 Tendremos que hacer varios pasos para podes desplegar la aplicación en kubernetes, para ello debemos seguir lo siguiente:
 
-**1. Instalar minikube**
+## Configuración
+
+ 1. Instalar minikube
+
     Para ello iremos a la página oficial de [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download) y descargamos el instalador dependiendo de nuestro SO.
    
-**2. Instalar kubectl**
-    Nos iremos a la página oficial de minikube e instalaremos [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+3. Instalar kubectl
 
-**3. Iniciar minikube**
-    Abriremos un cmd e iniciamos minikube con el siguiente comando: minikube start
-**4. **
+   Nos iremos a la página oficial de minikube e instalaremos [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+
+5. Iniciar minikube
+
+   Abriremos un cmd e iniciamos minikube con el siguiente comando: `minikube start`
+   
+4. Verificar el estado de minikube
+
+    Con el comando `minikube status` comprobamos que los componentes de minikube estan funcionando
+   
+5. Configurar kubectl para usar minikube
+
+    Con el comando `kubectl config use-context minikube` nos aseguraremos que `kubectl` apunta al cluster de minikube
+
+6. Verificar la configuración
+
+   Con el comando `kubectl get pods` podremos ver una lista con todos los nodos del cluster de minikube que esten activos
+
+## Despliegue 
+
+### Clonado del repositorio y crear la imagen
+Clonamos el proyecto de github desde un terminal con `git clone https://github.com/ImZiki/Pokedex-laravel.git` y nos vamos a la carpeta raiz del proyecto con `cd pokedex-laravel`
+Una vez en el directorio, usaremos `docker build -t ziki142/pokedex:latest .` para crear la imagen docker del proyecto, que utilizaremos luego en el despliegue.
+
+### Despliegue en el cluster de Minikube
+Estando en la carpeta raiz del proyecto, con minikube corriendo haremos uso de `kubectl apply -f k8s/` para aplicar los deployments y services que tenemos configurados en los archivos `deployment.yml`, `mysql-deployment.yml` y `service.yml` que contienen toda la informacion de la aplicación y las directrices que ya expusimos antes para que funcione todo correctamente.
+
+Una vez termine el proceso, haremos uso de los comandos `kubectl get pods` y `kubectl get svc` para asegurarnos de que todo se ha creado correctamente.
+
+Luego, entraremos en el nodo de pokedex con el comando `kubectl exec -it nombredelnodo -- bash` y escribiremos los comandos `php artisan migrate:fresh` y `php artisan db:seed` para que se creen todas las tablas de la base de datos y se rellenen con los datos que nos fueran necesarios. En nuestro caso, el seed rellena la tabla `pokemon_types` con los codigos de color de los tipos pokemon. Cuando se completen, podremos salir escribiendo `exit` en la terminal.
+
+Para poder servir nuestra aplicación y poder usarla de manera local con minikube, usamos el comando `minikube service nombredelservicio --url` y este nos dará una URL parecida a `127.0.0.1:puerto` el puerto será asignado por minikube de manera aleatoria.
+
+Una vez hecho todo esto, para cuando queramos parar la aplicación, solo tendremos que hacer uso de las teclas `Ctrl + C` y el comando `minikube stop` y el cluster se parará.
