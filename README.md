@@ -40,4 +40,10 @@ EXPOSE 80 443
 CMD service nginx start && php-fpm
 
 ## Archivos configurácion kubernetes (k8s)
+Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son tres:
+1. deployment.yml
+       
+2. mysql-deployment.yml
 
+3. service.yml
+   
