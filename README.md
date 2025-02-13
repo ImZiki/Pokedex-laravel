@@ -12,14 +12,15 @@
     -   **Breeze**: Un starter kit liviano de Laravel que incluye autenticación básica.
     -   **Alpine.js**: Una librería JavaScript minimalista que añade interactividad a las vistas sin necesidad de un framework pesado.
     -   **Blade**: El motor de plantillas de Laravel que permite escribir vistas reutilizables con una sintaxis simple y eficiente.
+  
 3.  **Axios.js para peticiones a API externa**\
     Una librería de JavaScript para realizar solicitudes HTTP de manera sencilla y eficiente. Se usa comúnmente en aplicaciones web para interactuar con APIs externas.
 
 4.  **Nginx para el servidor web**\
-    Un servidor web de alto rendimiento que se usa para servir tu aplicación Laravel, actuar como proxy inverso y manejar el tráfico de manera eficiente.
+    Un servidor web de alto rendimiento que se usa para servir la aplicación Laravel, actuar como proxy inverso y manejar el tráfico de manera eficiente.
 
 5.  **Docker para la imagen de la app**\
-    Permite empaquetar tu aplicación Laravel en un contenedor junto con sus dependencias, asegurando que funcione de manera consistente en cualquier entorno.
+    Permite empaquetar la aplicación Laravel en un contenedor junto con sus dependencias, asegurando que funcione de manera consistente en cualquier entorno.
 
 6.  **Kubernetes con Minikube para el despliegue local**
 
