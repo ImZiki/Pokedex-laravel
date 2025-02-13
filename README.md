@@ -3,6 +3,21 @@
 
 ## Explicacion app
 
+Nuestra aplicación es una aplicación web que se sirve de la API de [PokeAPI](https://pokeapi.co/) para crear una página web que sea como una pokédex.
+
+En la página web puedes registrate y crear un usuario que se guarda en una base de datos para que cuando hagas Login poder acceder a todas las funcionalidades de la página.
+
+Las funcionalidades son:
+- Registro
+- Login con autenticación
+- Consultas a la API externa
+
+En la **pódedex laravel** podemos buscar hasta 1025 pokemons ya sea por su nombre o por su nº de pokedex, también nos saldrá características del pokemon buscado, como:
+- Foto
+- Nombre
+- Tipo
+- Estadísticas de combate
+
 ## Tecnologias utilizadas
 1.  **Laravel**\
     Es un framework de PHP que facilita el desarrollo de aplicaciones web con una estructura limpia y organizada. Proporciona herramientas como enrutamiento, autenticación, ORM (Eloquent) y migraciones para bases de datos.
