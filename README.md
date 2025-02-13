@@ -12,7 +12,9 @@ Las funcionalidades son:
 - Login con autenticación
 - Consultas a la API externa
 
-En **pódedex laravel** podemos buscar hasta 1025 pokemons ya sea por su nombre o por su nº de pokedex, también nos saldrá características del pokemon buscado, como:
+En **pódedex laravel** podemos buscar hasta 1025 pokemons ya sea por su nombre o por su nº de pokedex, al acceder a la pokedex siempre cargará un pokemon aleatorio, si buscamos pokemons sin nombre o nº de pokedex saldrá un pokemon aleatorio. 
+
+Al buscar dicho pokemon nos saldrá características del pokemon buscado, como:
 - Foto
 - Nombre
 - Tipo
