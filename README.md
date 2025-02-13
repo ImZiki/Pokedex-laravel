@@ -242,7 +242,7 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
     
     EXPLICACIÓN
 
-### 1\. **`Service` para Pokedex**
+#### 1\. **`Service` para Pokedex**
 
 -   **`apiVersion: v1`**: Utiliza la versión 1 de la API para el servicio.
 -   **`kind: Service`**: Define un servicio en Kubernetes.
@@ -255,7 +255,7 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
         -   **`protocol: TCP`**: El servicio utiliza el protocolo TCP.
     -   **`type: NodePort`**: Define que el servicio será accesible externamente a través de un puerto en los nodos de Kubernetes (puerto dinámico asignado dentro de un rango específico, generalmente entre 30000-32767).
 
-### 2\. **`Service` para MySQL**
+#### 2\. **`Service` para MySQL**
 
 -   **`apiVersion: v1`**: Utiliza la versión 1 de la API para el servicio.
 -   **`kind: Service`**: Define un servicio para MySQL.
