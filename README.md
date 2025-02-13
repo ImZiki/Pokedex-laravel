@@ -290,6 +290,15 @@ server {
 # Pasos para desplegar la aplicación.
 Tendremos que hacer varios pasos para podes desplegar la aplicación en kubernetes, para ello debemos seguir lo siguiente:
 
-1. Instalar minikube
+**1. Instalar minikube**
    
-   Para ello iremos a la página oficial de [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download) y descargamos el instalador dependiendo de nuestro SO.
+    Para ello iremos a la página oficial de [minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download) y descargamos el instalador dependiendo de nuestro SO.
+   
+**2. Instalar kubectl**
+
+    Nos iremos a la página oficial de minikube e instalaremos [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/).
+
+**3. Iniciar minikube**
+
+    Abriremos un cmd e iniciamos minikube con el siguiente comando: `minikube start`
+**4. **
