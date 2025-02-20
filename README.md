@@ -248,7 +248,10 @@ Los archivos de configuración de kubernetes se encuentra en la carpeta k8s. Son
     ```
    EXPLICACIÓN
 
-   -   `apiVersion: apps/v1`: Especifica la versión de la API que se usa para interactuar con Kubernetes.-   `kind: Deployment`: Define el tipo de recurso a crear, en este caso un *Deployment*, que se encarga de gestionar los pods y las réplicas de la aplicación.-   `metadata`: Contiene metadatos sobre el recurso, en este caso el nombre del deployment es "pokedex".-   `spec`: Define la configuración deseada para el deployment:
+   -   `apiVersion: apps/v1`: Especifica la versión de la API que se usa para interactuar con Kubernetes.
+    -   `kind: Deployment`: Define el tipo de recurso a crear, en este caso un *Deployment*, que se encarga de gestionar los pods y las réplicas de la aplicación.
+    -   `metadata`: Contiene metadatos sobre el recurso, en este caso el nombre del deployment es "pokedex".
+    -   `spec`: Define la configuración deseada para el deployment:
     -   `replicas: 1`: Se quiere una sola réplica (pod) de la aplicación corriendo.
     -   `selector`: Se utiliza para identificar los pods gestionados por este deployment. Los pods se etiquetan con `app: pokedex`.
     -   `template`: Define la plantilla de los pods que se crearán:
