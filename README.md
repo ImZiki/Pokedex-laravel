@@ -88,23 +88,123 @@ CMD service nginx start && php-fpm
 ```
 EXPLICACIÓN
 
-- **Usar PHP-FPM con Nginx como base**: Se establece la imagen base de PHP-FPM y Nginx, que proporcionará el entorno necesario para ejecutar la aplicación Laravel con PHP y servirla usando Nginx.
+###  **Definición de la imagen base**
+
+
+`FROM php:8.2-fpm AS base`
+
+-   Se usa **PHP 8.2 con FPM (FastCGI Process Manager)** como base.
+-   Se nombra esta etapa como `base`, lo que permite reutilizarla en builds multi-etapa si fuera necesario.
+
+
+###  **Instalación de paquetes del sistema y extensiones de PHP**
+
+```
+RUN apt-get update && apt-get install -y\
+    nginx\
+    libpng-dev\
+    libjpeg62-turbo-dev\
+    libfreetype6-dev\
+    libzip-dev\
+    git\
+    unzip\
+    curl\
+    && docker-php-ext-configure gd --with-freetype --with-jpeg\
+    && docker-php-ext-install gd zip pdo pdo_mysql\
+    && rm -rf /var/lib/apt/lists/*
+```
+
+-   **Actualiza los repositorios** con `apt-get update`.
+-   **Instala paquetes necesarios**:
+    -   `nginx`: Servidor web.
+    -   `libpng-dev`, `libjpeg62-turbo-dev`, `libfreetype6-dev`: Librerías para trabajar con imágenes.
+    -   `libzip-dev`: Soporte para trabajar con archivos comprimidos en PHP.
+    -   `git`, `unzip`, `curl`: Herramientas útiles para descargas y gestión de código.
+-   **Configura e instala extensiones de PHP**:
+    -   `gd`: Librería para manipular imágenes, con soporte para FreeType y JPEG.
+    -   `zip`: Soporte para archivos `.zip`.
+    -   `pdo` y `pdo_mysql`: Para conexión con bases de datos MySQL.
+-   **Limpia la caché de `apt`** para reducir el tamaño de la imagen.
+
+
+
+###  **Instalación de Composer**
+
+
+
+`RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer`
+
+-   Descarga e instala **Composer** (gestor de dependencias de PHP) en `/usr/local/bin`.
+
+
+###  **Configuración del entorno de trabajo**
+
+
+
+`WORKDIR /var/www/html`
+
+-   Define `/var/www/html` como el **directorio de trabajo** dentro del contenedor.
+
+
+
+###  **Copia del código fuente**
+
+
+
+`COPY . .`
+
+-   Copia **todo el código del proyecto** desde la máquina host al contenedor.
   
-- **Instalar dependencias del sistema necesarias para Laravel y Nginx**: Se instalan las bibliotecas y herramientas del sistema requeridas para que Laravel funcione correctamente, como las extensiones de PHP y Nginx.
 
-- **Instalar Composer**: Se descarga e instala **Composer**, el administrador de dependencias de PHP, para manejar las bibliotecas de Laravel.
+###  **Creación de directorios para almacenamiento en Laravel**
 
-- **Establecer el directorio de trabajo**: Define el directorio en el contenedor donde se copiarán los archivos del proyecto y donde se ejecutarán los comandos dentro del contenedor.
 
-- **Copiar los archivos del proyecto (excluyendo los no necesarios)**: Copia los archivos del proyecto desde el directorio local al contenedor, excluyendo archivos no necesarios mediante un archivo `.dockerignore`.
+`RUN mkdir -p storage/framework/views && mkdir -p storage/framework/cache && mkdir -p storage/framework/sessions && mkdir -p storage/framework/testing`
 
-- **Instalar las dependencias de Composer**: Ejecuta Composer para instalar las dependencias de PHP necesarias para la aplicación Laravel.
+-   Crea los directorios dentro de `storage/framework/` necesarios para Laravel:
+    -   `views`: Caché de vistas compiladas.
+    -   `cache`: Caché de la aplicación.
+    -   `sessions`: Almacenamiento de sesiones.
+    -   `testing`: Caché para pruebas.
 
-- **Copiar la configuración de Nginx**: Copia el archivo de configuración personalizado de Nginx al contenedor para que Nginx se configure según las necesidades del proyecto.
 
-- **Exponer los puertos 80 y 443 para Nginx**: Exponen los puertos **80** y **443** en el contenedor para que Nginx pueda manejar tráfico HTTP y HTTPS desde fuera del contenedor.
+### **Instalación de dependencias de PHP (excluyendo las de desarrollo)**
 
-- **Iniciar Nginx y PHP-FPM**: Inicia los servicios de Nginx y PHP-FPM para que el contenedor esté listo para servir la aplicación Laravel.
+
+
+`RUN composer install --no-dev --prefer-dist --no-interaction`
+
+-   Instala las dependencias de la aplicación **sin incluir las de desarrollo** (`--no-dev`).
+-   Usa `--prefer-dist` para descargar paquetes comprimidos en lugar de fuentes (más rápido).
+-   Usa `--no-interaction` para evitar preguntas durante la instalación.
+
+
+###  **Configuración de Nginx**
+
+
+
+`COPY nginx/default.conf /etc/nginx/sites-available/default`
+
+-   Copia un archivo de configuración de Nginx desde el código fuente (`nginx/default.conf`) al directorio de configuración de Nginx dentro del contenedor.
+
+
+###  **Exposición de puertos**
+
+
+
+`EXPOSE 80 443`
+
+-   **Expone los puertos 80 y 443** para que el servidor Nginx pueda atender solicitudes HTTP y HTTPS.
+
+
+###  **Comando de inicio**
+
+
+
+`CMD service nginx start && php-fpm`
+
+-   Inicia **Nginx** (`service nginx start`).
+-   Luego inicia **PHP-FPM** (`php-fpm`), que manejará las peticiones PHP.
 
 
 ## Archivos configurácion kubernetes (k8s)
